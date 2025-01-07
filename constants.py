@@ -3,6 +3,7 @@ This file contain the constants of the tsp problem
 """
 
 # function constants
+PLOT_2D = True
 SHIFTED_SPH_FUN = True
 SHIFTED_SPH_CTE = 10 # shifter sphere constant
 SHIFTED_SPH_START = -100 # shifter sphere function limits
@@ -13,5 +14,5 @@ SCHWEFEL_START = -500 # shifter sphere function limits
 SCHWEFEL_STOP = 500 # shifter sphere function limits
 
 #problem constants
-DIM = 2 #function dimension
+DIM = 10 #function dimension
 VECTOR_LEN = 1000 # vector length
