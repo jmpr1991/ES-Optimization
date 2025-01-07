@@ -2,25 +2,44 @@ import constants
 import functions
 
 import numpy as np
-from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 
 def graphics_2d():
-
+    """
+    This function plot shifted sphere and Schwefel functions
+    :return:n/a
+    """
+    # Plot shifted sphere function using matplotlib
     if constants.SHIFTED_SPH_FUN is True:
-        x_vector = np.zeros((constants.DIM, constants.VECTOR_LEN))
-        for i in range(constants.DIM):
+        x_vector = np.zeros((2, constants.VECTOR_LEN))
+        for i in range(2):
             x_vector[i] = np.linspace(constants.SHIFTED_SPH_START,constants.SHIFTED_SPH_STOP,num=constants.VECTOR_LEN)
 
-        X, Y = np.meshgrid(x_vector[0], x_vector[1])
-        Z = functions.shifted_sph_fun([X,Y])
+        x, y = np.meshgrid(x_vector[0], x_vector[1])
+        z = functions.shifted_sph_fun([x,y])
 
-        fig = plt.figure()
+        plt.figure('figure 1')
         ax = plt.axes(projection='3d')
-        ax.plot_trisurf(X, Y, Z, rstride=1, cstride=1,
-                        cmap='viridis', edgecolor='none')
-        ax.set_title('surface')
-        ax.contour3D(X, Y, Z, 50, cmap='binary')
+        ax.set_title('Shifted Sphere Function')
+        ax.contour3D(x, y, z, 50, cmap='viridis')
         ax.set_xlabel('x')
         ax.set_ylabel('y')
         ax.set_zlabel('z')
+
+    # Plot schwefel function using matplotlib
+    if constants.SCHWEFEL_FUN is True:
+        x_vector = np.zeros((2, constants.VECTOR_LEN))
+        for i in range(2):
+            x_vector[i] = np.linspace(constants.SCHWEFEL_START,constants.SCHWEFEL_STOP,num=constants.VECTOR_LEN)
+
+        x, y = np.meshgrid(x_vector[0], x_vector[1])
+        z = functions.schwefel_fun([x,y])
+
+        plt.figure('figure 2')
+        ax = plt.axes(projection='3d')
+        ax.set_title('Schwefel function')
+        ax.contour3D(x, y, z, 50, cmap='viridis')
+        ax.set_xlabel('x')
+        ax.set_ylabel('y')
+        ax.set_zlabel('z')
+        plt.show()

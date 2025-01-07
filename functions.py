@@ -24,6 +24,6 @@ def schwefel_fun(x_vector):
 
     schwefel = 0
     for i in range(len(x_vector)):
-        schwefel = schwefel + (-x_vector[i] - np.sin(np.sqrt(abs(x_vector[i]))))
+        schwefel = schwefel + (-x_vector[i] * np.sin(np.sqrt(abs(x_vector[i]))))
 
     return schwefel
