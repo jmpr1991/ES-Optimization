@@ -3,7 +3,10 @@ import constants
 import numpy as np
 
 def initialization_function():
-
+    """
+    This function initializes the first population to start with the evolution strategy
+    :return: initial_population: initial population vector
+    """
     # vector initialization, depends on the mutation type
     if constants.MUTATION_TYPE == 'NON_CORR_1':
         initial_population = np.full(shape=(constants.DIM + 1, constants.POPULATION_SIZE), fill_value=np.nan)
