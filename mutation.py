@@ -11,7 +11,7 @@ def mutation_function(offspring_vector):
         mutated_vector = np.full(shape=(constants.DIM + 1, constants.OFFSPRING_SIZE), fill_value=np.nan)
 
         # start the mutation
-        for i in range(constants.POPULATION_SIZE):
+        for i in range(constants.OFFSPRING_SIZE):
             # strategic parameter mutation
             mutated_vector[-1, i] = offspring_vector[-1, i] * np.exp(constants.TAU_1 * np.random.normal())
 
@@ -29,7 +29,7 @@ def mutation_function(offspring_vector):
         mutated_vector = np.full(shape=(constants.DIM * 2, constants.OFFSPRING_SIZE), fill_value=np.nan)
 
         # mutation of variables
-        for i in range(constants.POPULATION_SIZE):
+        for i in range(constants.OFFSPRING_SIZE):
             random_value_i = np.random.normal()
 
             for j in reversed(range(constants.DIM * 2)):

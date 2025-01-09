@@ -2,6 +2,7 @@ import constants
 import initialization
 import Recombination
 import mutation
+import survival_selection
 
 import statistics_plots
 
@@ -17,6 +18,9 @@ def main():
 
     # Mutation
     mutated_population = mutation.mutation_function(offspring_population)
+
+    # Survival selection
+    survival_population = survival_selection.survival_selection_function(mutated_population, parent_population)
 
     # print 2d plots to have an image of the reference functions
     if constants.PLOT_2D is True:
