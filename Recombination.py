@@ -3,6 +3,12 @@ import constants
 import numpy as np
 
 def recombination_function(parent_vector):
+    """
+    This function is in charge of the parent selection and the recombination steps of the evolution strategy
+    :param parent_vector: parent vector
+    :return: offspring_vector: offspring vector built after recombination
+    """
+    offspring_vector = np.nan
 
     # initialize the offspring vector depending on the mutation type
     if constants.MUTATION_TYPE == 'NON_CORR_1':

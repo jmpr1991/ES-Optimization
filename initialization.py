@@ -8,6 +8,8 @@ def initialization_function():
     :return: initial_population: initial population vector
     """
     # vector initialization, depends on the mutation type
+    initial_population = np.nan
+
     if constants.MUTATION_TYPE == 'NON_CORR_1':
         initial_population = np.full(shape=(constants.DIM + 1, constants.POPULATION_SIZE), fill_value=np.nan)
 
