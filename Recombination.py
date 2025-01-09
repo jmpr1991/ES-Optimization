@@ -14,12 +14,27 @@ def recombination_function(parent_vector):
     # initialize the recombination
     for i in range(constants.OFFSPRING_SIZE):
 
-        #random selection of parents
+        # random selection of parents
         random_parents = np.random.randint(0, high=constants.DIM , size=constants.NUM_PARENTS)
-        for j in range(constants.DIM):
 
-            if constants.RECOMBINATION_TYPE == 'INTERMEDIATE_DISCRETE':
-                offspring_vector[j, i] = parent_vector[j, random_parents[np.random.randint(0, constants.NUM_PARENTS)]]
+        # parent reproduction and offspring creation
+        for j in range(np.shape(offspring_vector)[0]):
 
+            # Global discrete recombination
+            if constants.RECOMBINATION_TYPE == 'GLOBAL_DISCRETE':
+                random_parent = random_parents[np.random.randint(0, constants.NUM_PARENTS)]
+                offspring_vector[j, i] = parent_vector[j, random_parent]
+
+            # Global intermediate recombination
+            elif constants.RECOMBINATION_TYPE == 'GLOBAL_INTERMEDIATE':
+                offspring_vector[j, i] = np.sum(parent_vector[j, random_parents]) / constants.NUM_PARENTS
+
+            # Combined recombination
+            elif constants.RECOMBINATION_TYPE == 'COMBINED':
+                if j < constants.DIM:
+                    random_parent = random_parents[np.random.randint(0, constants.NUM_PARENTS)]
+                    offspring_vector[j, i] = parent_vector[j, random_parent]
+                else:
+                    offspring_vector[j, i] = np.sum(parent_vector[j, random_parents]) / constants.NUM_PARENTS
 
     return offspring_vector

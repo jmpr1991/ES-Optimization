@@ -24,8 +24,8 @@ VECTOR_LEN = 1000 # vector length
 #problem constants
 FUNCTION = 'SPHERE' # parameter to indicate the function to optimize 'SPHERE' or 'SCHWEFEL'
 MUTATION_TYPE = 'NON_CORR_1' # type of mutation 'CORR_1' or 'NON_CORR_N'
-RECOMBINATION_TYPE = 'GLOBAL_DISCRETE' # type of recombination
-DIM = 10 # function dimension
+RECOMBINATION_TYPE = 'COMBINED' # type of recombination 'GLOBAL_DISCRETE', 'GLOBAL_INTERMEDIATE' or 'COMBINED'
+DIM = 4 # function dimension
 POPULATION_SIZE = 30 # population size
 OFFSPRING_SIZE = 200 # offspring size
 NUM_PARENTS = 3 # number of parents
