@@ -21,18 +21,18 @@ SCHWEFEL_START = -500 # shifter sphere function limits
 SCHWEFEL_STOP = 500 # shifter sphere function limits
 
 #problem characteristics
-FUNCTION = 'SPHERE' # parameter to indicate the function to optimize 'SPHERE' or 'SCHWEFEL'
+FUNCTION = 'SCHWEFEL' # parameter to indicate the function to optimize 'SPHERE' or 'SCHWEFEL'
 assert FUNCTION == 'SPHERE' or 'SCHWEFEL'
 MUTATION_TYPE = 'NON_CORR_1' # type of mutation 'CORR_1' or 'NON_CORR_N'
 assert MUTATION_TYPE == 'NON_CORR_1' or 'NON_CORR_N'
-RECOMBINATION_TYPE = 'GLOBAL_DISCRETE' # type of recombination 'GLOBAL_DISCRETE', 'GLOBAL_INTERMEDIATE' or 'COMBINED'
+RECOMBINATION_TYPE = 'COMBINED' # type of recombination 'GLOBAL_DISCRETE', 'GLOBAL_INTERMEDIATE' or 'COMBINED'
 assert RECOMBINATION_TYPE == 'GLOBAL_DISCRETE' or 'GLOBAL_INTERMEDIATE' or 'COMBINED'
 SELECTION_TYPE = 'NO_ELITISM' # type of recombination 'ELITISM', 'NO_ELITISM'
 assert RECOMBINATION_TYPE == 'ELITISM' or 'NO_ELITISM'
 
 # constant parameters
 N_GENERATIONS = 1200
-DIM = 4 # function dimension
+DIM = 10 # function dimension
 POPULATION_SIZE = 30 # population size
 OFFSPRING_SIZE = 200 # offspring size
 NUM_PARENTS = 3 # number of parents
@@ -40,5 +40,5 @@ TAU_1 = 1 / np.sqrt(DIM)
 TAU_2 = 1 / np.sqrt(2 * DIM)
 TAU_3 = 1 / np.sqrt(2 * np.sqrt(DIM))
 EPSILON = 1e-3
-ERROR = 1e-5
+ERROR = 1e-20
 

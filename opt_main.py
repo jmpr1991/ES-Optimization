@@ -10,12 +10,18 @@ import numpy as np
 
 def main():
 
+    # initialize success rate and success mean evaluations number (pex) parameters
+    success_rate = 0
+    pex = []
+    best_adaptation_value_vector = []
+
     # Initialization of variables
     best_adaptation_value = np.full(shape=constants.N_GENERATIONS, fill_value=np.nan)
 
     # Initialization of the population
     parent_population = initialization.initialization_function()
 
+    # Evolution Strategy loop
     gen = 0
     while gen < constants.N_GENERATIONS:
 
@@ -31,7 +37,11 @@ def main():
         #save the best adaptation value
         best_adaptation_value[gen] = sorted_adaptation_value[0]
 
-        if abs(best_adaptation_value[gen - 1] - best_adaptation_value[gen - 2]) < constants.ERROR:
+        # break the while loop since accuracy has been achieved
+        if abs(best_adaptation_value[gen] - best_adaptation_value[gen - 1]) < constants.ERROR:
+            success_rate = success_rate + 1
+            best_adaptation_value_vector.append(best_adaptation_value[gen])
+            pex.append(gen)
             break
 
         gen = gen + 1
