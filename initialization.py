@@ -25,14 +25,15 @@ def initialization_function():
             if constants.FUNCTION == 'SCHWEFEL':
                 initial_population[j, i] = np.random.uniform(constants.SCHWEFEL_START, constants.SCHWEFEL_STOP)
 
-    # initialization of the sigma
+    # initialization of the sigma for the 1 step non correlation option
     if constants.MUTATION_TYPE == 'NON_CORR_1':
         for i in range(constants.POPULATION_SIZE):
-            initial_population[constants.DIM, i] = np.random.uniform(0,1)
+            initial_population[constants.DIM, i] = np.random.uniform(1,5)
 
+    # initialization of the sigma for the n step non correlation option
     if constants.MUTATION_TYPE == 'NON_CORR_N':
         for i in range(constants.POPULATION_SIZE):
             for j in range(constants.DIM):
-                initial_population[constants.DIM + j, i] = np.random.uniform(0,1)
+                initial_population[constants.DIM + j, i] = np.random.uniform(1,5)
 
     return initial_population
