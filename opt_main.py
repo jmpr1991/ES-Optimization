@@ -18,6 +18,8 @@ def main():
 
     # Initialization of variables
     best_adaptation_value = np.full(shape=constants.N_GENERATIONS, fill_value=np.nan)
+    mean_adaptation_value = np.full(shape=constants.N_GENERATIONS, fill_value=np.nan)
+    std_adaptation_value = np.full(shape=constants.N_GENERATIONS, fill_value=np.nan)
 
     for execution_i in range(constants.N_EXECUTIONS):
         print("execution {}".format(execution_i+1), "on going")
@@ -40,6 +42,8 @@ def main():
 
             #save the best adaptation value
             best_adaptation_value[gen] = sorted_adaptation_value[0]
+            mean_adaptation_value[gen] = np.mean(sorted_adaptation_value)
+            std_adaptation_value[gen] = np.std(sorted_adaptation_value)
 
             # compute the first termination condition (optimum found)
             if abs(best_adaptation_value[gen] - constants.MIN) < constants.EPSILON:
@@ -55,10 +59,12 @@ def main():
                 gen_converge.append(gen)
                 break
 
+            # jump to next generation
             gen = gen + 1
 
     # print statistics and plots
     statistics_plots.statistics(success_rate, pex, best_adaptation_value_vector, gen_converge)
+    statistics_plots.graphics(best_adaptation_value, mean_adaptation_value, std_adaptation_value)
 
     # print 2d plots to have an image of the reference functions
     if constants.PLOT_2D is True:
