@@ -3,7 +3,12 @@ import constants
 import numpy as np
 
 def mutation_function(offspring_vector):
-
+    """
+    This function mutates the offspring vector. 2 types of mutation are implemented: non correlated 1 step and
+    non correlated n steps
+    :param offspring_vector: vector compiling the offspring individuals
+    :return: mutated_vector: vector with the mutated offspring
+    """
     mutated_vector = np.nan
 
     # initialize the offspring vector for the non correlated 1-step mutation

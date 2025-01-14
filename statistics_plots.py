@@ -30,7 +30,13 @@ def statistics(success_rate, pex, best_adaptation_value_vector, gen_converge):
     print("Generations to converge = ", np.mean(gen_converge), '+/-', np.std(gen_converge))
 
 def graphics(best_adaptation_value, mean_adaptation_value, std_adaptation_value):
-
+    """
+    This function prints the progress curve
+    :param best_adaptation_value: vector with the best adaptation value in each generation
+    :param mean_adaptation_value: vector with the mean adaptation value in each generation
+    :param std_adaptation_value: vector with the std of the adaptation value vector in each generation
+    :return:
+    """
     # print the convergence of the best individual
     plt.plot(np.array(best_adaptation_value), linewidth=0.6)
     plt.plot(np.array(mean_adaptation_value), linewidth=0.6, color='darkred')

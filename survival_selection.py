@@ -4,7 +4,14 @@ import functions
 import numpy as np
 
 def survival_selection_function(mutated_vector, parent_vector):
-
+    """
+    This function select the individuals who go to the next generation. 2 types of survival selection are implemented:
+    with elitism and without elitism
+    :param mutated_vector: vector with the mutated individuals
+    :param parent_vector: parent vector
+    :return: survival_population: vector with the survivals, the next generation parent population. The vector is sorted.
+    :return: sorted_adaptation_value: vector with the sorted adaptation values of the survival_population
+    """
     #initialize adaptation value
     adaptation_value = np.full(shape=(constants.POPULATION_SIZE + constants.OFFSPRING_SIZE, 2), fill_value=np.nan)
 
