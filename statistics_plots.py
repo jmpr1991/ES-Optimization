@@ -4,6 +4,30 @@ import functions
 import numpy as np
 import matplotlib.pyplot as plt
 
+def statistics(success_rate, pex, best_adaptation_value_vector, gen_converge):
+    """
+    This function print the statistics of the evolution strategy
+    :param success_rate: number of successful executions
+    :param pex: number of generations to succeed
+    :param best_adaptation_value_vector:
+    """
+
+    # Success rate computation
+    print("\n Statistics:")
+
+    print("TE = ", success_rate / constants.N_EXECUTIONS * 100, "%")
+    if success_rate == 0:
+        print("PEX = n/a")
+
+    else:
+        print("PEX = ", np.mean(pex), " +/-", np.std(pex))
+
+    # VAMM computation
+    vamm = sum(best_adaptation_value_vector) / constants.N_EXECUTIONS
+    vamm_std = np.std(best_adaptation_value_vector)
+    print('VAMM = ', vamm, '+/-', vamm_std)
+    print("Generations to converge = ", np.mean(gen_converge), '+/-', np.std(gen_converge))
+
 def graphics_2d():
     """
     This function plot shifted sphere and Schwefel functions

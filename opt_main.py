@@ -13,44 +13,56 @@ def main():
     # initialize success rate and success mean evaluations number (pex) parameters
     success_rate = 0
     pex = []
+    gen_converge= []
     best_adaptation_value_vector = []
 
     # Initialization of variables
     best_adaptation_value = np.full(shape=constants.N_GENERATIONS, fill_value=np.nan)
 
-    # Initialization of the population
-    parent_population = initialization.initialization_function()
+    for execution_i in range(constants.N_EXECUTIONS):
+        print("execution {}".format(execution_i+1), "on going")
 
-    # Evolution Strategy loop
-    gen = 0
-    while gen < constants.N_GENERATIONS:
+        # Initialization of the population
+        parent_population = initialization.initialization_function()
 
-        # Parent selection and recombination
-        offspring_population = Recombination.recombination_function(parent_population)
+        # Evolution Strategy loop
+        gen = 0
+        while gen < constants.N_GENERATIONS:
 
-        # Mutation
-        mutated_population = mutation.mutation_function(offspring_population)
+            # Parent selection and recombination
+            offspring_population = Recombination.recombination_function(parent_population)
 
-        # Survival selection
-        parent_population, sorted_adaptation_value = survival_selection.survival_selection_function(mutated_population, parent_population)
+            # Mutation
+            mutated_population = mutation.mutation_function(offspring_population)
 
-        #save the best adaptation value
-        best_adaptation_value[gen] = sorted_adaptation_value[0]
+            # Survival selection
+            parent_population, sorted_adaptation_value = survival_selection.survival_selection_function(mutated_population, parent_population)
 
-        # break the while loop since accuracy has been achieved
-        if abs(best_adaptation_value[gen] - best_adaptation_value[gen - 1]) < constants.ERROR:
-            success_rate = success_rate + 1
-            best_adaptation_value_vector.append(best_adaptation_value[gen])
-            pex.append(gen)
-            break
+            #save the best adaptation value
+            best_adaptation_value[gen] = sorted_adaptation_value[0]
 
-        gen = gen + 1
+            # compute the first termination condition (optimum found)
+            if abs(best_adaptation_value[gen] - constants.MIN) < constants.EPSILON:
+                success_rate = success_rate + 1
+                best_adaptation_value_vector.append(best_adaptation_value[gen])
+                pex.append(gen)
+                gen_converge.append(gen)
+                break
+
+            # compute the second termination condition (algorithm blocked in a local minimum)
+            if abs(best_adaptation_value[gen] - best_adaptation_value[gen-1]) < constants.ERROR:
+                best_adaptation_value_vector.append(best_adaptation_value[gen])
+                gen_converge.append(gen)
+                break
+
+            gen = gen + 1
+
+    # print statistics and plots
+    statistics_plots.statistics(success_rate, pex, best_adaptation_value_vector, gen_converge)
 
     # print 2d plots to have an image of the reference functions
     if constants.PLOT_2D is True:
         statistics_plots.graphics_2d()
-
-    print(best_adaptation_value)
 
 if __name__ == "__main__":
     main()
