@@ -34,22 +34,24 @@ def survival_selection_function(mutated_vector, parent_vector):
 
         return survival_population, sorted_adaptation_value[0:constants.POPULATION_SIZE, 0]
 
-    # evaluate parent vector
-    counter = 0
-    for i in range(constants.OFFSPRING_SIZE, constants.OFFSPRING_SIZE + constants.POPULATION_SIZE, 1):
-
-        # save the index to support on the sort process
-        adaptation_value[i, 1] = i
-
-        if constants.FUNCTION == 'SPHERE':
-            adaptation_value[i, 0] = functions.shifted_sph_fun(parent_vector[0:constants.DIM, counter])
-
-        if constants.FUNCTION == 'SCHWEFEL':
-            adaptation_value[i, 0] = functions.schwefel_fun(parent_vector[0:constants.DIM, i])
-
-        counter = counter + 1
-
     if constants.SELECTION_TYPE == 'ELITISM':
+
+        # evaluate parent vector
+        counter = 0
+        for i in range(constants.OFFSPRING_SIZE, constants.OFFSPRING_SIZE + constants.POPULATION_SIZE, 1):
+
+            # save the index to support on the sort process
+            adaptation_value[i, 1] = i
+
+            if constants.FUNCTION == 'SPHERE':
+                adaptation_value[i, 0] = functions.shifted_sph_fun(parent_vector[0:constants.DIM, counter])
+
+            if constants.FUNCTION == 'SCHWEFEL':
+                adaptation_value[i, 0] = functions.schwefel_fun(parent_vector[0:constants.DIM, counter])
+
+            counter = counter + 1
+
+
         sorted_adaptation_value = adaptation_value[np.argsort(adaptation_value[:, 0]), :]
 
         #vector containing mutated vector and parent vector

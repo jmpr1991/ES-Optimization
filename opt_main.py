@@ -16,13 +16,14 @@ def main():
     gen_converge= []
     best_adaptation_value_vector = []
 
-    # Initialization of variables
-    best_adaptation_value = np.full(shape=constants.N_GENERATIONS, fill_value=np.nan)
-    mean_adaptation_value = np.full(shape=constants.N_GENERATIONS, fill_value=np.nan)
-    std_adaptation_value = np.full(shape=constants.N_GENERATIONS, fill_value=np.nan)
-
     for execution_i in range(constants.N_EXECUTIONS):
+
         print("execution {}".format(execution_i+1), "on going")
+
+        # Initialization of variables
+        best_adaptation_value = np.full(shape=constants.N_GENERATIONS, fill_value=np.nan)
+        mean_adaptation_value = np.full(shape=constants.N_GENERATIONS, fill_value=np.nan)
+        std_adaptation_value = np.full(shape=constants.N_GENERATIONS, fill_value=np.nan)
 
         # Initialization of the population
         parent_population = initialization.initialization_function()
