@@ -30,7 +30,7 @@ MUTATION_TYPE = 'NON_CORR_N' # type of mutation 'CORR_1' or 'NON_CORR_N'
 assert MUTATION_TYPE == 'NON_CORR_1' or 'NON_CORR_N'
 RECOMBINATION_TYPE = 'GLOBAL_INTERMEDIATE' # type of recombination 'GLOBAL_DISCRETE', 'GLOBAL_INTERMEDIATE' or 'COMBINED'
 assert RECOMBINATION_TYPE == 'GLOBAL_DISCRETE' or 'GLOBAL_INTERMEDIATE' or 'COMBINED'
-SELECTION_TYPE = 'ELITISM' # type of recombination 'ELITISM', 'NO_ELITISM'
+SELECTION_TYPE = 'NO_ELITISM' # type of recombination 'ELITISM', 'NO_ELITISM'
 assert RECOMBINATION_TYPE == 'ELITISM' or 'NO_ELITISM'
 
 # constant parameters
@@ -39,7 +39,7 @@ N_GENERATIONS = 1200
 DIM = 10 # function dimension
 POPULATION_SIZE = 30 # population size
 OFFSPRING_SIZE = 200 # offspring size
-NUM_PARENTS = 3 # number of parents
+NUM_PARENTS = 30 # number of parents
 TAU_1 = 1 / np.sqrt(DIM)
 TAU_2 = 1 / np.sqrt(2 * DIM)
 TAU_3 = 1 / np.sqrt(2 * np.sqrt(DIM))
