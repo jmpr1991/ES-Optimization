@@ -7,7 +7,7 @@ import numpy as np
 np.random.seed(2) #seed of the random function to avoid errors in the vector generator
 
 # function constants
-PLOT_2D = True
+PLOT_2D = False
 
 SHIFTED_SPH_CTE = 10 # shifter sphere constant
 SHIFTED_SPH_START = -100 # shifted sphere function limits

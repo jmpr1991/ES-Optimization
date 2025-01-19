@@ -10,8 +10,8 @@ import numpy as np
 
 def main():
 
-    # print 2d plots to have an image of the reference functions
-    if constants.PLOT_2D is False:
+    # print 2d plots to have an image of the reference functions if true
+    if constants.PLOT_2D is True:
         statistics_plots.graphics_2d()
 
     # raise an error in case some of these constants are not properly set
