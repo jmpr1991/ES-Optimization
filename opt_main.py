@@ -10,11 +10,15 @@ import numpy as np
 
 def main():
 
-    # raise an error in case some of this constants are not properly set
-    assert constants.FUNCTION == 'SPHERE', 'SCHWEFEL'
-    assert constants.MUTATION_TYPE == 'NON_CORR_1', 'NON_CORR_N'
-    assert constants.RECOMBINATION_TYPE == 'GLOBAL_DISCRETE', 'GLOBAL_INTERMEDIATE', 'COMBINED'
-    assert constants.SELECTION_TYPE == 'ELITISM', 'NO_ELITISM'
+    # print 2d plots to have an image of the reference functions
+    if constants.PLOT_2D is False:
+        statistics_plots.graphics_2d()
+
+    # raise an error in case some of these constants are not properly set
+    assert 'SPHERE' or 'SCHWEFEL' == constants.FUNCTION
+    assert 'NON_CORR_1' or 'NON_CORR_N' ==constants.MUTATION_TYPE
+    assert 'GLOBAL_DISCRETE' or 'GLOBAL_INTERMEDIATE' or 'COMBINED' == constants.RECOMBINATION_TYPE
+    assert 'ELITISM' or 'NO_ELITISM' == constants.SELECTION_TYPE
 
     # initialize success rate and success mean evaluations number (pex) parameters
     success_rate = 0
@@ -74,9 +78,7 @@ def main():
     statistics_plots.statistics(success_rate, pex, best_adaptation_value_vector, gen_converge)
     statistics_plots.graphics(best_adaptation_value, mean_adaptation_value, std_adaptation_value)
 
-    # print 2d plots to have an image of the reference functions
-    if constants.PLOT_2D is True:
-        statistics_plots.graphics_2d()
+
 
 if __name__ == "__main__":
     main()
