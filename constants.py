@@ -21,8 +21,8 @@ MIN = 0 # Minimum of the function. The minimum is shared by Sphere and Schwefel 
 
 #problem characteristics
 FUNCTION = 'SCHWEFEL' # parameter to indicate the function to optimize 'SPHERE' or 'SCHWEFEL'
-MUTATION_TYPE = 'NON_CORR_1' # type of mutation 'CORR_1' or 'NON_CORR_N'
-RECOMBINATION_TYPE = 'GLOBAL_DISCRETE' # type of recombination 'GLOBAL_DISCRETE', 'GLOBAL_INTERMEDIATE' or 'COMBINED'
+MUTATION_TYPE = 'NON_CORR_1' # type of mutation 'NON_CORR_1' or 'NON_CORR_N'
+RECOMBINATION_TYPE = 'COMBINED' # type of recombination 'GLOBAL_DISCRETE', 'GLOBAL_INTERMEDIATE' or 'COMBINED'
 SELECTION_TYPE = 'NO_ELITISM' # type of recombination 'ELITISM', 'NO_ELITISM'
 
 # constant parameters

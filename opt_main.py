@@ -78,7 +78,5 @@ def main():
     statistics_plots.statistics(success_rate, pex, best_adaptation_value_vector, gen_converge)
     statistics_plots.graphics(best_adaptation_value, mean_adaptation_value, std_adaptation_value)
 
-
-
 if __name__ == "__main__":
     main()
