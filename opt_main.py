@@ -74,8 +74,10 @@ def main():
             # jump to next generation
             gen = gen + 1
 
-    # print statistics and plots
+    # print statistics
     statistics_plots.statistics(success_rate, pex, best_adaptation_value_vector, gen_converge)
+
+    # print progress curve of the last execution
     statistics_plots.graphics(best_adaptation_value, mean_adaptation_value, std_adaptation_value)
 
 if __name__ == "__main__":
