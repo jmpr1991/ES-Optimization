@@ -25,7 +25,7 @@ def survival_selection_function(mutated_vector, parent_vector):
             adaptation_value[i, 0] = functions.shifted_sph_fun(mutated_vector[0:constants.DIM, i])
 
         if constants.FUNCTION == 'SCHWEFEL':
-            adaptation_value[i, 0] = functions.schwefel_fun(mutated_vector[0:constants.DIM, i])
+            adaptation_value[i, 0] = functions.schwefel_fun(mutated_vector[0:constants.DIM, i], constants.DIM)
 
     if constants.SELECTION_TYPE == 'NO_ELITISM':
         sorted_adaptation_value = adaptation_value[np.argsort(adaptation_value[:,0]), :]
@@ -47,7 +47,7 @@ def survival_selection_function(mutated_vector, parent_vector):
                 adaptation_value[i, 0] = functions.shifted_sph_fun(parent_vector[0:constants.DIM, counter])
 
             if constants.FUNCTION == 'SCHWEFEL':
-                adaptation_value[i, 0] = functions.schwefel_fun(parent_vector[0:constants.DIM, counter])
+                adaptation_value[i, 0] = functions.schwefel_fun(parent_vector[0:constants.DIM, counter], constants.DIM)
 
             counter = counter + 1
 

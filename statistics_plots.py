@@ -76,7 +76,7 @@ def graphics_2d():
         x_vector[i] = np.linspace(constants.SCHWEFEL_START,constants.SCHWEFEL_STOP,num=1000)
 
     x, y = np.meshgrid(x_vector[0], x_vector[1])
-    z = functions.schwefel_fun([x,y])
+    z = functions.schwefel_fun([x,y], 2)
 
     plt.figure('figure 2')
     ax = plt.axes(projection='3d')
