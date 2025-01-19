@@ -21,12 +21,14 @@ def survival_selection_function(mutated_vector, parent_vector):
         # save the index to support on the sort process
         adaptation_value[i, 1] = i
 
+        #compute the adaptation value of the function
         if constants.FUNCTION == 'SPHERE':
             adaptation_value[i, 0] = functions.shifted_sph_fun(mutated_vector[0:constants.DIM, i])
 
         if constants.FUNCTION == 'SCHWEFEL':
             adaptation_value[i, 0] = functions.schwefel_fun(mutated_vector[0:constants.DIM, i], constants.DIM)
 
+    # No elitism solution
     if constants.SELECTION_TYPE == 'NO_ELITISM':
         sorted_adaptation_value = adaptation_value[np.argsort(adaptation_value[:,0]), :]
 
@@ -34,6 +36,7 @@ def survival_selection_function(mutated_vector, parent_vector):
 
         return survival_population, sorted_adaptation_value[0:constants.POPULATION_SIZE, 0]
 
+    # Elitism solution
     if constants.SELECTION_TYPE == 'ELITISM':
 
         # evaluate parent vector
@@ -52,11 +55,13 @@ def survival_selection_function(mutated_vector, parent_vector):
             counter = counter + 1
 
 
+        # sort the adaptation value vector
         sorted_adaptation_value = adaptation_value[np.argsort(adaptation_value[:, 0]), :]
 
         #vector containing mutated vector and parent vector
         elitist_vector = np.concatenate((mutated_vector, parent_vector),axis=1)
 
+        #select survival population
         survival_population = elitist_vector[:, sorted_adaptation_value[0:constants.POPULATION_SIZE, 1].astype(int)]
 
         return survival_population, sorted_adaptation_value[0:constants.POPULATION_SIZE, 0]
