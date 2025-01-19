@@ -10,6 +10,12 @@ import numpy as np
 
 def main():
 
+    # raise an error in case some of this constants are not properly set
+    assert constants.FUNCTION == 'SPHERE', 'SCHWEFEL'
+    assert constants.MUTATION_TYPE == 'NON_CORR_1', 'NON_CORR_N'
+    assert constants.RECOMBINATION_TYPE == 'GLOBAL_DISCRETE', 'GLOBAL_INTERMEDIATE', 'COMBINED'
+    assert constants.SELECTION_TYPE == 'ELITISM', 'NO_ELITISM'
+
     # initialize success rate and success mean evaluations number (pex) parameters
     success_rate = 0
     pex = []
