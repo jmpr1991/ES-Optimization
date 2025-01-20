@@ -26,15 +26,15 @@ RECOMBINATION_TYPE = 'COMBINED' # type of recombination 'GLOBAL_DISCRETE', 'GLOB
 SELECTION_TYPE = 'NO_ELITISM' # type of recombination 'ELITISM', 'NO_ELITISM'
 
 # constant parameters
-N_EXECUTIONS = 10
-N_GENERATIONS = 1200
+N_EXECUTIONS = 10 # number of executions
+N_GENERATIONS = 1200 # maximum number of generations
 DIM = 10 # function dimension
 POPULATION_SIZE = 30 # population size
 OFFSPRING_SIZE = 200 # offspring size
 NUM_PARENTS = 20 # number of parents
-TAU_1 = 1 / np.sqrt(DIM)
-TAU_2 = 1 / np.sqrt(2 * DIM)
-TAU_3 = 1 / np.sqrt(2 * np.sqrt(DIM))
-EPSILON = 1e-3
-ERROR = 1e-6
+TAU_1 = 1 / np.sqrt(DIM) # mutation parameter used in non correlated 1 step method
+TAU_2 = 1 / np.sqrt(2 * DIM) # mutation parameter used in non correlated n step method
+TAU_3 = 1 / np.sqrt(2 * np.sqrt(DIM)) # mutation parameter used in non correlated n step method
+EPSILON = 1e-3 # minimum value sigma sigma mutation parameter can take
+ERROR = 1e-6 # delta difference used to break execution because the algo has converged in a local minimum
 
