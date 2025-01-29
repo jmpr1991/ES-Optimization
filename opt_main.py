@@ -14,12 +14,6 @@ def main():
     if constants.PLOT_2D is True:
         statistics_plots.graphics_2d()
 
-    # raise an error in case some of these constants are not properly set
-    assert 'SPHERE' or 'SCHWEFEL' == constants.FUNCTION
-    assert 'NON_CORR_1' or 'NON_CORR_N' ==constants.MUTATION_TYPE
-    assert 'GLOBAL_DISCRETE' or 'GLOBAL_INTERMEDIATE' or 'COMBINED' == constants.RECOMBINATION_TYPE
-    assert 'ELITISM' or 'NO_ELITISM' == constants.SELECTION_TYPE
-
     # initialize success rate and success mean evaluations number (pex) parameters
     success_rate = 0
     pex = []
