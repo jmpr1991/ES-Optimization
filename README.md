@@ -1,3 +1,6 @@
+# EE-Optimization
+Evolution Strategy algorithm to optimize real valued functions
+
 This project implements an Evolution Strategy (ES) algorithm to solve the sphere shifted function and Schwefel function.
 
 It is submitted as part of the coursework for the Evolutionary Computation subject in the Master’s program in Artificial
